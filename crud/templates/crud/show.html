@@ -1,0 +1,68 @@
+{% extends 'crud/base.html' %}
+{% block body %}
+<meta name="viewport" content="width=device-width, initial-scale=1">
+		<style>
+		input[type=text] {
+  width: 130px;
+  box-sizing: border-box;
+  border: 2px solid #ccc;
+  border-radius: 4px;
+  font-size: 16px;
+  background-color: white;
+  background-image: url('searchicon.png');
+  background-position: 10px 10px; 
+  background-repeat: no-repeat;
+  padding: 12px 20px 12px 40px;
+  -webkit-transition: width 0.4s ease-in-out;
+  transition: width 0.4s ease-in-out;
+}
+
+input[type=text]:focus {
+  width: 100%;
+}
+table {
+  border-collapse: collapse;
+  width: 100%;
+}
+
+th, td {
+  text-align: left;
+  padding: 8px;
+}
+
+tr:nth-child(even){background-color: #f2f2f2}
+
+th {
+  background-color: #4CAF50;
+  color: white;
+}
+</style>
+<form>
+  <input type="text" name="search" placeholder="Search..">
+</form>
+
+<h3 class="text-primary" align="center">AVAILABLE MEDICINES</h3>
+
+<table >
+    <thead class="alert-warning">
+        <tr align="center">
+            <th>Sl</th>
+            <th>Name</th>
+            <th>Diseases</th>
+			<th>Price</th>
+			<th>Available</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for member in members %}
+        <tr>
+            <td>{{ member.Sl }}</td>
+            <td>{{ member.Name }} </td>
+			<td>{{ member.Diseases }}</td>
+			<td>{{ member.Price }}</td>
+			<td>{{ member.Available }}</td>
+             </tr>
+        {% endfor %}
+    </tbody>
+</table>
+{% endblock %}

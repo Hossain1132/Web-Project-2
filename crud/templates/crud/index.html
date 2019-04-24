@@ -1,0 +1,67 @@
+{% extends 'crud/base.html' %}
+{% block body %}
+<h3 class="text-primary" align="center">ADD NEW MEDICINE</h3>
+        <hr style="border-top:1px dotted #000;"/>
+		<style>
+table {
+  border-collapse: collapse;
+  width: 100%;
+}
+
+th, td {
+  text-align: left;
+  padding: 8px;
+}
+
+tr:nth-child(even){background-color: #f2f2f2}
+
+th {
+  background-color: #4CAF50;
+  color: white;
+}
+</style>
+<form class="form-inline"  action="create" method="POST">
+    {% csrf_token %}
+    <div class="form-group">
+        <label for="sl">Sl No       :</label>
+        <input type="text" name="sl" class="form-control" style="width:100%;" required="required"/> <br></br>
+        <label for="name">Name      :</label>
+        <input type="text" name="name" class="form-control" style="width:100%;" required="required"/> <br></br>
+        <label for="ds">Diseases    :</label>
+        <input type="text" name="ds" class="form-control" style="width:100%;" required="required"/> <br></br>
+        <label for="price">Price    :</label>
+        <input type="text" name="price" class="form-control" style="width:100%;" required="required"/> <br></br>
+        <label for="avl">Available  :</label>
+        <input type="text" name="avl" class="form-control" style="width:100%;" required="required"/> <br></br>
+        <button type="submit" class="btn btn-sm btn-primary"><span class="glyphicon glyphicon-plus"></span> ADD</button>
+    </div>
+</form>
+<br />
+
+<h3 class="text-primary" align="center">AVAILABLE MEDICINES</h3>
+
+<table >
+    <thead class="alert-warning">
+        <tr align="center">
+            <th>Sl</th>
+            <th>Name</th>
+            <th>Diseases</th>
+			<th>Price</th>
+			<th>Available</th>
+			<th>Action</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for member in members %}
+        <tr>
+            <td>{{ member.Sl }}</td>
+            <td>{{ member.Name }} </td>
+			<td>{{ member.Diseases }}</td>
+			<td>{{ member.Price }}</td>
+			<td>{{ member.Available }}</td>
+            <td> <center><a class="btn btn-sm btn-warning" href="edit/{{ member.id }}"><span class="glyphicon glyphicon-edit"></span> Edit</a> <a class="btn btn-sm btn-danger" href="delete/{{ member.id }}"><span class="glyphicon glyphicon-trash"></span> Delete</a></center></td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+{% endblock %}

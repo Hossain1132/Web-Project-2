@@ -1,0 +1,35 @@
+{% extends 'crud/base.html' %}
+{% block body %}
+<div class="card">
+<h3 class="card-header info-color white-text text-center py-4">
+        <strong>UPDATE MEDICINES</strong>
+    </h3>
+        <hr style="border-top:1px dotted #000;"/>
+    <form class="form-inline" method="POST" action="update/{{ members.id }}">
+        {% csrf_token %}
+        <div class="form-group">
+            <label for="sl">Sl No       :</label>
+            <input type="text" name="sl" class="form-control" value="{{ members.Sl }}" style="width:100%;" required="required"/>
+</div>	<br></br>		
+		 <div class="form-group">
+            <label for="name">Name       :</label>
+            <input type="text" name="name" class="form-control" value="{{ members.Name }}" style="width:100%;" required="required"/>	
+        </div> <br></br>
+		<div class="form-group">
+            <label for="ds">Diseases       :</label> 
+            <input type="text" name="ds" class="form-control" value="{{ members.Diseases }}"style="width:90%;" required="required"/>
+        </div>
+		<br></br>
+        <div class="form-group">
+            <label for="price">Price       :</label>
+            <input type="text" name="price" class="form-control" value="{{ members.Price }}"style="width:100%;" required="required"/>	
+        </div> <br></br>
+		<div class="form-group">
+            <label for="avl">Available       :</label>
+            <input type="text" name="avl" class="form-control" value="{{ members.Available }}"style="width:90%;" required="required"/>
+        </div> <br></br>
+        <div class="form-group">
+            <button type="submit" class="btn btn-sm btn-primary" ><span class="glyphicon glyphicon-edit"></span> Update</button>
+        </div> <br></br>
+    </form>
+{% endblock %}
